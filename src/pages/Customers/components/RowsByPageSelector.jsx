@@ -11,9 +11,6 @@ const RowsByPageSelector = ({ changeRowsByPage, rowsByPage }) => {
         <option value="5">5 / страница</option> 
         <option value="10">10 / страница</option>
         <option value="15">15 / страница</option>
-        <option value="30">30 / страница</option>
-        <option value="50">50 / страница</option>
-        <option value="100">100 / страница</option>
       </select> 
     </>
   );
