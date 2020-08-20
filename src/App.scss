@@ -340,7 +340,7 @@ body {
   }
 }
 
-.customer-info {
+.customer-info, .main-page {
   h1 {
     margin-bottom: 20px;
   }
@@ -376,6 +376,24 @@ body {
   }
 }
 
+.main-page {
+  ol {
+    margin-top: 20px;
+  }
+}
+
+.main-page__developer {  
+  display: flex;
+  align-items: center;
+}
+
+.main-page__developer-photo {
+  margin-right: 30px;
+  img {
+    width: 250px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .customers-header {
     flex-direction: column;
@@ -385,12 +403,21 @@ body {
   .form-filter {
     margin-bottom: 10px;
   }
+
+  .main-page__developer {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .burger-menu-btn {
     display: flex;
   }
+
+  .main-page__developer {
+    display: flex;
+  }
+
   .side-bar {
     position: absolute;
     left: -1000px;
@@ -403,9 +430,24 @@ body {
     }
   }
 
-  .not-found-page {
+  .not-found-page, .main-page {
     h1 {
       font-size: 18px;
+    }
+  }
+
+  .main-page {
+    h3 {
+      font-size: 16px;
+    }
+    ol {
+      font-size: 14px;
+
+      li:before {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+      }
     }
   }
 
@@ -437,8 +479,14 @@ body {
   }
 } 
 
+@media screen and (max-width: 600px) {
+  .main-page__developer {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 375px) {
-  .not-found-page {
+  .not-found-page, .main-page {
     h1 {
       font-size: 16px;
     }

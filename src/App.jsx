@@ -5,6 +5,7 @@ import Terminals from './pages/Terminals';
 import Customers from './pages/Customers';
 import DetailedCustomer from './pages/DetailedCustomer';
 import NotFoundPage from './pages/NotFoundPage';
+import MainPage from './pages/MainPage';
 import SideBar from './components/SideBar';
 import burgerIcon from './assets/images/burger-menu-icon.svg';
 import './App.scss';
@@ -93,7 +94,7 @@ export default class App extends Component {
                 exact />
               <Route 
                 path="/"
-                render={() => <h2>Main Page</h2>}
+                render={() => <MainPage />}
                 exact />
               <Route
                 path="/terminals"
