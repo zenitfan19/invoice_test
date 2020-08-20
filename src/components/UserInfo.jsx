@@ -11,7 +11,7 @@ const UserInfo = ({ isLoggedIn, userLogIn, userName }) => {
                           <button
                             className="btn"
                             type="button"
-                            onClick={userLogIn}>
+                            onClick={() => userLogIn()}>
                               Выйти
                           </button>
                         )

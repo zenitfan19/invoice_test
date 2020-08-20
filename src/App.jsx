@@ -10,8 +10,8 @@ import './App.scss';
 
 export default class App extends Component {
   state = {
-    isLoggedIn: false,
-    userName: null,
+    isLoggedIn: !!sessionStorage.getItem('testApp_isLoggedIn'),
+    userName: sessionStorage.getItem('testApp_userName'),
     mobileMenuOpened: false
   };
 
@@ -20,6 +20,14 @@ export default class App extends Component {
       isLoggedIn: !isLoggedIn,
       userName
     }));
+
+    if (userName) {
+      sessionStorage.setItem('testApp_isLoggedIn', true);
+      sessionStorage.setItem('testApp_userName', userName);
+    } else {
+      sessionStorage.removeItem('testApp_isLoggedIn');
+      sessionStorage.removeItem('testApp_userName');
+    }
   }
 
   toggleMobileMenu = (e) => {
@@ -35,6 +43,19 @@ export default class App extends Component {
 
     return false;
   };
+
+  // componentDidMount() {
+  //   const isLoggedIn = sessionStorage.getItem('testApp_isLoggedIn');
+  //   const userName = sessionStorage.getItem('testApp_userName');
+
+  //   console.log(isLoggedIn);
+  //   if (isLoggedIn) {
+  //     this.setState({
+  //       isLoggedIn,
+  //       userName
+  //     });
+  //   }
+  // }
 
   render() {
     const { isLoggedIn, userName, mobileMenuOpened } = this.state;
