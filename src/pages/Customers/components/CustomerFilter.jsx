@@ -37,8 +37,9 @@ import React, { Component } from 'react';
   render() {
     const { searchName } = this.state;
     return (
-      <form      
-        onSubmit={this.onSearchFormSubmit}>
+      <form   
+        className="form-filter"   
+        onSubmit={this.onSearchFormSubmit}>        
         <input
           type="text"
           name="searchName"
@@ -48,10 +49,12 @@ import React, { Component } from 'react';
           value={searchName}
           onChange={this.onNameChange} />       
         <button
+          className="btn"
           type="submit">
             Поиск
         </button>
         <button
+          className="btn btn_default"
           type="button"
           onClick={this.onSearchFormReset}>
             Сбросить

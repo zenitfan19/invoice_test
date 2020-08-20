@@ -46,13 +46,13 @@ export default class Terminal extends Component {
 
     if (isLoggedIn) {
       return (
-        <>
+        <div className="terminals">
           <TerminalForm
             addTerminal={this.addTerminal}/>
           <TerminalTable
             terminalsArr={terminalsArr}
             removeTerminal={this.removeTerminal} />
-        </>
+        </div>
       );
     }
     return (

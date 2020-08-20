@@ -39,26 +39,33 @@ export default class TerminalForm extends Component {
   render() {
     const { inputName, inputDescription } = this.state;
     return (
-      <form      
+      <form
+        className="form"     
         onSubmit={this.onFormSubmit}>
-        <input
-          type="text"
-          name="terminalName"
-          id="terminalName"
-          placeholder="Имя терминала"
-          autoComplete="off"
-          value={inputName}
-          onChange={this.onNameChange} />      
-        <textarea
-          name="terminalDescription"
-          id="terminalDescription"
-          cols="30"
-          rows="10"
-          placeholder="Описание терминала"
-          value={inputDescription}
-          onChange={this.onDescriptionChange}>
-        </textarea>
-        <button>Добавить</button>  
+        <div className="form__input-group">
+          <input
+            type="text"
+            name="terminalName"
+            id="terminalName"
+            placeholder="Имя терминала"
+            autoComplete="off"
+            value={inputName}
+            onChange={this.onNameChange}
+            required />
+        </div>
+        <div className="form__input-group">
+          <textarea
+            name="terminalDescription"
+            id="terminalDescription"
+            cols="30"
+            rows="10"
+            placeholder="Описание терминала"
+            value={inputDescription}
+            onChange={this.onDescriptionChange}
+            required>
+          </textarea>
+        </div>        
+        <button className="btn">Добавить</button>  
       </form>
     );
   } 

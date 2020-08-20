@@ -1,7 +1,7 @@
 import React from 'react';
 
 const gitHubAccountErrorMsg = (
-  <p>
+  <p className="error-alert">
     Данный Github Аккаунт не существует
   </p>
 );

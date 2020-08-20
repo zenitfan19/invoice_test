@@ -9,6 +9,7 @@ const UserInfo = ({ isLoggedIn, userLogIn, userName }) => {
   const logOutBtn = isLoggedIn
                       ? (
                           <button
+                            className="btn"
                             type="button"
                             onClick={userLogIn}>
                               Выйти
@@ -17,11 +18,11 @@ const UserInfo = ({ isLoggedIn, userLogIn, userName }) => {
                       : null;
                       
   return (
-    <>
+    <div className="side-bar__user-info">
       <img src={userAvatar} alt="userAvatar" />
       <h1>{gitHubAccount}</h1>
       {logOutBtn}
-    </>
+    </div>
   );
 };
 

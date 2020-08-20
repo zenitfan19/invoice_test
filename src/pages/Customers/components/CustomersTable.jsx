@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CustomersTable = ({ customers }) => {
-  const customersRows = customers.map((customer) => {
+  const customersRows = customers.map((customer, index) => {
     const {
       id,
       name,
@@ -11,7 +11,10 @@ const CustomersTable = ({ customers }) => {
   } = customer;
     return (    
       <tr key={id}>
-        <td>{id}</td>
+        <td
+          title={`real ID: ${id}`}>
+            {index+1}
+        </td>
         <td>{name}</td>
         <td>{average_check}</td>
         <td>{total_purchases}</td>
@@ -20,20 +23,22 @@ const CustomersTable = ({ customers }) => {
     );
   });
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Имя</th>
-          <th>Средний чек</th>
-          <th>Количество покупок</th>
-          <th>Общая выручка</th>
-        </tr>
-      </thead>
-      <tbody>
-        {customersRows}
-      </tbody>      
-    </table>
+    <div className="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th className="sortable_th">Средний чек</th>
+            <th className="sortable_th">Количество покупок</th>
+            <th className="sortable_th">Общая выручка</th>
+          </tr>
+        </thead>
+        <tbody>
+          {customersRows}
+        </tbody>      
+      </table>
+    </div>    
   );
 };
 

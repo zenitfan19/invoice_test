@@ -67,20 +67,22 @@ export default class Customers extends Component {
     
     if (isLoggedIn) {
       return (
-        <>
-          <CustomerFilter
-            searchCustomer={this.searchCustomer}
-            resetSearch={this.resetSearch} />
-          <CustomersTable 
-            customers={customersToShow} />
+        <div className="customers">
+          <div className="customers-header">
+            <CustomerFilter
+              searchCustomer={this.searchCustomer}
+              resetSearch={this.resetSearch} />
+            <RowsByPageSelector
+              changeRowsByPage={this.changeRowsByPage}
+              rowsByPage={rowsByPage} />
+          </div>          
           <TablePagination
             currentPage={currentPage}
             totalPages={totalPages}
             changeCurrPage={this.changeCurrPage} />
-          <RowsByPageSelector
-            changeRowsByPage={this.changeRowsByPage}
-            rowsByPage={rowsByPage} />
-        </>
+          <CustomersTable 
+            customers={customersToShow} />                    
+        </div>
       );
     }
     return (

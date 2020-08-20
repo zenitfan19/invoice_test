@@ -1,7 +1,7 @@
 import React from 'react';
 
 const passwordErrorMsg = (
-  <p>
+  <p className="error-alert">
     Пароль должен содержать: 
     не менее 8 символов, 
     хотя бы 1 прописную латинскую букву, 

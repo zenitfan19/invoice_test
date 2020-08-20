@@ -56,24 +56,29 @@ export default class Authorization extends Component {
     if (!isLoggedIn) {
       return (
         <form
-          onSubmit={this.onFormSubmit}>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            placeholder="GitHub Аккаунт"
-            value={nameInput}
-            onChange={this.onNameChange} />
-          {nameErrorAlert}        
-          <input
-            type="password"
-            name="userPassword"
-            id="userPassword"
-            placeholder="Пароль"
-            value={passwordInput}
-            onChange={this.onPasswordChange} />
-          {passwordAlert}
-          <button>Войти</button>  
+          onSubmit={this.onFormSubmit}
+          className="form">
+          <div className="form__input-group">
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              placeholder="GitHub Аккаунт"
+              value={nameInput}
+              onChange={this.onNameChange} />
+            {nameErrorAlert}
+          </div>  
+          <div className="form__input-group">
+            <input
+              type="password"
+              name="userPassword"
+              id="userPassword"
+              placeholder="Пароль"
+              value={passwordInput}
+              onChange={this.onPasswordChange} />
+            {passwordAlert}
+          </div>          
+          <button className="btn">Войти</button>  
         </form>
       );
     }
