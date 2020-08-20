@@ -2,9 +2,9 @@ import React from 'react';
 
 import defaultUserAvatar from '../assets/images/defaultUserAvatar.png';
 
-const UserInfo = ({ isLoggedIn, userLogIn }) => {
-  const userAvatar = defaultUserAvatar;
-  const userName = 'Anonymous';
+const UserInfo = ({ isLoggedIn, userLogIn, userName }) => {
+  const userAvatar = isLoggedIn ? `https://github.com/${userName}.png` : defaultUserAvatar;
+  const gitHubAccount = isLoggedIn ? userName : 'Anonymous';
   
   const logOutBtn = isLoggedIn
                       ? (
@@ -19,7 +19,7 @@ const UserInfo = ({ isLoggedIn, userLogIn }) => {
   return (
     <>
       <img src={userAvatar} alt="userAvatar" />
-      <h1>{userName}</h1>
+      <h1>{gitHubAccount}</h1>
       {logOutBtn}
     </>
   );

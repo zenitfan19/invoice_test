@@ -7,23 +7,26 @@ import SideBar from './components/SideBar';
 
 export default class App extends Component {
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    userName: null
   };
 
-  userLogIn = () => {
+  userLogIn = (userName = null) => {
     this.setState(({ isLoggedIn }) => ({
-      isLoggedIn: !isLoggedIn
+      isLoggedIn: !isLoggedIn,
+      userName
     }));
   }
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, userName } = this.state;
 
     return (
       <Router>
         <SideBar
           isLoggedIn={isLoggedIn}
-          userLogIn={this.userLogIn} />
+          userLogIn={this.userLogIn}
+          userName={userName} />
         <Switch>  
           <Route 
             path="/login"

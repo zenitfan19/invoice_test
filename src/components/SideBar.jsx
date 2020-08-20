@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import UserInfo from './UserInfo';
 
-const SideBar = ({ isLoggedIn, userLogIn }) => {
+const SideBar = ({ isLoggedIn, userLogIn, userName }) => {
   return (
     <>
       <UserInfo
         isLoggedIn={isLoggedIn} 
-        userLogIn={userLogIn} />
+        userLogIn={userLogIn}
+        userName={userName} />
       <div>
         <Link to="/terminals">Терминалы</Link>
         <Link to="/buyers">Покупатели</Link>
