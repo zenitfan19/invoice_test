@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import CustomersTable from './components/CustomersTable';
 import CustomerFilter from './components/CustomerFilter';
 import RowsByPageSelector from './components/RowsByPageSelector';
@@ -60,23 +61,30 @@ export default class Customers extends Component {
   
   render() {
     const { customers, rowsByPage, currentPage, totalPages } = this.state;
+    const { isLoggedIn }  = this.props;
     const customersToShow = customers
       .slice(currentPage * rowsByPage, currentPage * rowsByPage + rowsByPage);
+    
+    if (isLoggedIn) {
+      return (
+        <>
+          <CustomerFilter
+            searchCustomer={this.searchCustomer}
+            resetSearch={this.resetSearch} />
+          <CustomersTable 
+            customers={customersToShow} />
+          <TablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            changeCurrPage={this.changeCurrPage} />
+          <RowsByPageSelector
+            changeRowsByPage={this.changeRowsByPage}
+            rowsByPage={rowsByPage} />
+        </>
+      );
+    }
     return (
-      <>
-        <CustomerFilter
-          searchCustomer={this.searchCustomer}
-          resetSearch={this.resetSearch} />
-        <CustomersTable 
-          customers={customersToShow} />
-        <TablePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          changeCurrPage={this.changeCurrPage} />
-        <RowsByPageSelector
-          changeRowsByPage={this.changeRowsByPage}
-          rowsByPage={rowsByPage} />
-      </>
+      <Redirect to="/login" />
     );
   }
 }

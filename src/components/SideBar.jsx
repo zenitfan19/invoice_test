@@ -1,8 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import UserInfo from './UserInfo';
 
-const SideBar = () => {
+const SideBar = ({ isLoggedIn, userLogIn }) => {
   return (
-    <h1>This is sidebar</h1>
+    <>
+      <UserInfo
+        isLoggedIn={isLoggedIn} 
+        userLogIn={userLogIn} />
+      <div>
+        <Link to="/terminals">Терминалы</Link>
+        <Link to="/buyers">Покупатели</Link>
+      </div>
+      <div>Copyright &copy; 2020</div>
+    </>
   );
 };
 

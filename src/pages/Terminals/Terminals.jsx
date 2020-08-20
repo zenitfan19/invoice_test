@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import TerminalForm from './components/TerminalForm';
 import TerminalTable from './components/TerminalTable';
 import defaultTerminals from '../../constants/DefaultTerminals';
@@ -41,14 +42,21 @@ export default class Terminal extends Component {
 
   render() {
     const { terminalsArr } = this.state;
+    const { isLoggedIn }  = this.props;
+
+    if (isLoggedIn) {
+      return (
+        <>
+          <TerminalForm
+            addTerminal={this.addTerminal}/>
+          <TerminalTable
+            terminalsArr={terminalsArr}
+            removeTerminal={this.removeTerminal} />
+        </>
+      );
+    }
     return (
-      <>
-        <TerminalForm
-          addTerminal={this.addTerminal}/>
-        <TerminalTable
-          terminalsArr={terminalsArr}
-          removeTerminal={this.removeTerminal} />
-      </>
-    );
+      <Redirect to="/login" />
+    );    
   }  
 }
