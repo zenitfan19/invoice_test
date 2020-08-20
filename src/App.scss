@@ -366,6 +366,16 @@ body {
   } 
 }
 
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  img {
+    width: 70%;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .customers-header {
     flex-direction: column;
@@ -390,6 +400,12 @@ body {
 
     &.opened {
       left: 0px;
+    }
+  }
+
+  .not-found-page {
+    h1 {
+      font-size: 18px;
     }
   }
 
@@ -420,3 +436,11 @@ body {
     padding: 5px 10px;
   }
 } 
+
+@media screen and (max-width: 375px) {
+  .not-found-page {
+    h1 {
+      font-size: 16px;
+    }
+  }
+}

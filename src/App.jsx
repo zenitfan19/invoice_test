@@ -4,6 +4,7 @@ import Authorization from './pages/Authorization';
 import Terminals from './pages/Terminals';
 import Customers from './pages/Customers';
 import DetailedCustomer from './pages/DetailedCustomer';
+import NotFoundPage from './pages/NotFoundPage';
 import SideBar from './components/SideBar';
 import burgerIcon from './assets/images/burger-menu-icon.svg';
 import './App.scss';
@@ -112,7 +113,7 @@ export default class App extends Component {
                           userId={id} />;
                 }} />
               <Route        
-                render={() => <h2>404 page</h2>} />
+                render={() => <NotFoundPage /> } />
             </Switch>
           </div>
         </Router>
