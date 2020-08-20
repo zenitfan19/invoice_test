@@ -13,13 +13,57 @@ export default class Customers extends Component {
     customers: defaultCustomers,
     rowsByPage: defaultRowsByPage,
     currentPage: 0,
-    totalPages: this.calcTotalPages()
+    totalPages: this.calcTotalPages(),
+    currentSorting: null,
+    sortingType: 0
   };
   
   calcTotalPages (customers, rowsByPage) {
     if (customers)
       return Math.ceil(customers.length / rowsByPage);
     return Math.ceil(defaultCustomers.length / defaultRowsByPage);
+  };
+
+  sortCustomers = (sortingColumn) => {
+    const { currentSorting, sortingType } = this.state;
+    
+    let newCustomersArr = null;
+
+    if (currentSorting === sortingColumn) {
+      switch(sortingType) {
+        case 1:
+          newCustomersArr = defaultCustomers
+                            .slice()
+                            .sort((a, b) => b[sortingColumn] - a[sortingColumn]);
+          this.setState({
+            customers: newCustomersArr,      
+            currentPage: 0,
+            currentSorting: sortingColumn,
+            sortingType: 2
+          });
+          break;
+        default:
+          newCustomersArr = defaultCustomers
+                            .slice();        
+          this.setState({
+            customers: newCustomersArr,      
+            currentPage: 0,
+            currentSorting: null,
+            sortingType: 0
+          });  
+          break;
+      }
+    } else {
+      newCustomersArr = defaultCustomers
+                        .slice()
+                        .sort((a, b) => a[sortingColumn] - b[sortingColumn]);
+      this.setState({
+        customers: newCustomersArr,      
+        currentPage: 0,
+        currentSorting: sortingColumn,
+        sortingType: 1
+      });
+    }        
   };
 
   searchCustomer = (searchName) => {
@@ -60,7 +104,14 @@ export default class Customers extends Component {
   };
   
   render() {
-    const { customers, rowsByPage, currentPage, totalPages } = this.state;
+    const {
+      customers,
+      rowsByPage,
+      currentPage,
+      totalPages,
+      currentSorting,
+      sortingType
+    } = this.state;
     const { isLoggedIn }  = this.props;
     const customersToShow = customers
       .slice(currentPage * rowsByPage, currentPage * rowsByPage + rowsByPage);
@@ -81,7 +132,10 @@ export default class Customers extends Component {
             totalPages={totalPages}
             changeCurrPage={this.changeCurrPage} />
           <CustomersTable 
-            customers={customersToShow} />                    
+            customers={customersToShow}
+            currentSorting={currentSorting}
+            sortingType={sortingType}
+            sortCustomers={this.sortCustomers} />                    
         </div>
       );
     }

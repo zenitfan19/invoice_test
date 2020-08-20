@@ -211,7 +211,31 @@ body {
   }
   tr {    
     .clickable {
+      position: relative;
       padding: 0;
+      padding-right: 25px;
+
+      img {
+        display: none;
+        position: absolute;
+        top: calc(50% - 10px);
+        right: 10px;
+        width: 20px;
+        height: 20px;
+      }
+
+      &.up {
+        img.sort-down {
+          display: block;
+        }
+      }
+
+      &.down {
+        img.sort-up {
+          display: block;
+        }
+      }
+
       a {
         display: flex;
         justify-content: center;
