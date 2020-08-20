@@ -94,7 +94,8 @@ export default class App extends Component {
                 exact />
               <Route 
                 path="/"
-                render={() => <MainPage />}
+                render={() => <MainPage 
+                                isLoggedIn={isLoggedIn} />}
                 exact />
               <Route
                 path="/terminals"
