@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Authorization from './pages/Authorization';
 import Terminals from './pages/Terminals';
 import Customers from './pages/Customers';
+import DetailedCustomer from './pages/DetailedCustomer';
 import SideBar from './components/SideBar';
 import burgerIcon from './assets/images/burger-menu-icon.svg';
 import './App.scss';
@@ -79,7 +80,16 @@ export default class App extends Component {
               <Route
                 path="/buyers"
                 render={() => <Customers 
-                                isLoggedIn={isLoggedIn} />} />
+                                isLoggedIn={isLoggedIn} />}
+                exact/>
+              <Route
+                path="/buyers/:id"
+                render={({ match }) => {
+                  const { id } = match.params;
+                  return <DetailedCustomer 
+                          isLoggedIn={isLoggedIn}
+                          userId={id} />;
+                }} />
               <Route        
                 render={() => <h2>404 page</h2>} />
             </Switch>

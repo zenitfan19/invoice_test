@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CustomersTable = ({ customers }) => {
   const customersRows = customers.map((customer, index) => {
@@ -8,12 +9,18 @@ const CustomersTable = ({ customers }) => {
       average_check,
       total_purchases,
       total_revenue 
-  } = customer;
+    } = customer;
+    const linkToCustomer = `/buyers/${id}`;
+
     return (    
       <tr key={id}>
         <td
+          className="clickable"
           title={`real ID: ${id}`}>
-            {index+1}
+            <Link
+              to={linkToCustomer}>
+                {index+1}
+            </Link>
         </td>
         <td>{name}</td>
         <td>{average_check}</td>
@@ -29,9 +36,9 @@ const CustomersTable = ({ customers }) => {
           <tr>
             <th>ID</th>
             <th>Имя</th>
-            <th className="sortable_th">Средний чек</th>
-            <th className="sortable_th">Количество покупок</th>
-            <th className="sortable_th">Общая выручка</th>
+            <th className="clickable">Средний чек</th>
+            <th className="clickable">Количество покупок</th>
+            <th className="clickable">Общая выручка</th>
           </tr>
         </thead>
         <tbody>
